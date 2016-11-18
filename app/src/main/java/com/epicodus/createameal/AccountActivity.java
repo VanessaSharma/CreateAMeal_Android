@@ -11,7 +11,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class AccountActivity extends AppCompatActivity {
-    @Bind(R.id.name) EditText mName;
+    @Bind(R.id.userName) EditText mUserName;
     @Bind(R.id.email) EditText mEmail;
     @Bind(R.id.password) EditText mPassword;
     @Bind(R.id.createButton)
@@ -26,11 +26,11 @@ public class AccountActivity extends AppCompatActivity {
         mCreateButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                String name = mName.getText().toString();
+                String userName = mUserName.getText().toString();
                 String email = mEmail.getText().toString();
                 String password = mPassword.getText().toString();
                 Intent intent = new Intent(AccountActivity.this, UserActivity.class);
-                intent.putExtra("name", name);
+                intent.putExtra("userName", userName);
                 startActivity(intent);
 
             }

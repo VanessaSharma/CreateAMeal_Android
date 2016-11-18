@@ -9,10 +9,10 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:hint="Email"
+        android:inputType="textPersonName"
+        android:hint="User Name"
         android:ems="10"
-        android:id="@+id/userEmail"
+        android:id="@+id/userName"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="83dp" />
@@ -24,7 +24,7 @@
         android:ems="10"
         android:id="@+id/userPassword"
         android:hint="Password"
-        android:layout_below="@+id/userEmail"
+        android:layout_below="@+id/userName"
         android:layout_centerHorizontal="true" />
 
     <TextView
