@@ -20,11 +20,9 @@
         <activity android:name=".AccountActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.createameal.MainActivity">
-            </meta-data>
-
+                android:value="com.epicodus.createameal.MainActivity"></meta-data>
         </activity>
-
+        <activity android:name=".UserActivity"></activity>
     </application>
 
 </manifest>
