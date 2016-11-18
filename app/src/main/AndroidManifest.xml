@@ -7,23 +7,42 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivity"
-            android:theme="@style/NoActionBarTheme">
+        android:theme="@style/NoActionBarTheme">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AccountActivity">
+        <activity
+            android:name=".AccountActivity"
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.createameal.MainActivity" />
         </activity>
-        <activity android:name=".UserActivity" />
-        <activity android:name=".LogInActivity"></activity>
+        <activity
+            android:name=".UserActivity"
+            android:theme="@style/AppTheme">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.createameal.AccountActivity">
+            </meta-data>
+
+        </activity>
+        <activity
+            android:name=".LogInActivity"
+            android:theme="@style/AppTheme">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.createameal.LogInActivity">
+            </meta-data>
+
+        </activity>
+
     </application>
 
 </manifest>
