@@ -9,19 +9,23 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
-    private Button mSignInButton;
-    private Button mSignUpButton;
-    private TextView mCreateAMealTextView;
+     @Bind(R.id.signInButton) Button mSignInButton;
+     @Bind(R.id.signUpButton) Button mSignUpButton;
+     @Bind(R.id.createAMealTextView) TextView mCreateAMealTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mCreateAMealTextView = (TextView) findViewById(R.id.createAMealTextView);
+        ButterKnife.bind(this);
+
         Typeface caviarDreamsFont = Typeface.createFromAsset(getAssets(), "fonts/Caviar_Dreams_Bold.ttf");
         mCreateAMealTextView.setTypeface(caviarDreamsFont);
-        mSignInButton = (Button) findViewById(R.id.signInButton);
+
         mSignInButton.setOnClickListener(new View.OnClickListener() {
             public void onClick (View v){
                 Intent intent = new Intent(MainActivity.this, AccountActivity.class);
@@ -29,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mSignUpButton = (Button) findViewById(R.id.signUpButton);
         mSignUpButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -37,5 +40,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 }
