@@ -24,11 +24,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create A Meal"
+        android:textSize="45sp"
+        android:id="@+id/createAMealTextView"
+        android:textColor="#FFFFFF"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:id="@+id/textView"
-        android:textColor="#FFFFFF" />
+        android:layout_marginTop="44dp" />
     <!--android:textColor="@color/colorTextIcons"/>-->
 
     <Button
@@ -37,8 +38,10 @@
         android:text="Sign In"
         android:id="@+id/signInButton"
         android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/textView"
-        android:layout_toStartOf="@+id/textView" />
+        android:layout_alignLeft="@+id/createAMealTextView"
+        android:layout_alignStart="@+id/createAMealTextView"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -46,9 +49,9 @@
         android:layout_height="wrap_content"
         android:text="Sign Up"
         android:id="@+id/signUpButton"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView" />
+        android:layout_alignTop="@+id/signInButton"
+        android:layout_alignRight="@+id/createAMealTextView"
+        android:layout_alignEnd="@+id/createAMealTextView" />
 
 
 
