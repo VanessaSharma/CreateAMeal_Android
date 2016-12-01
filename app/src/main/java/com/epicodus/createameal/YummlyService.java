@@ -14,6 +14,13 @@ public class YummlyService {
                 .build();
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.YUMMLY_BASE_URL).newBuilder();
-        urlBuilder.addQueryParameter(Constants.Yu)
+        urlBuilder.addQueryParameter(Constants.YUMMLY_ID_QUERY_PARAMETER, Constants.YUMMLY_ID);
+        urlBuilder.addQueryParameter(Constants.YUMMLY_KEY_QUERY_PARAMETER, Constants.YUMMLY_KEY);
+        urlBuilder.addQueryParameter(Constants.YUMMLY_QUERY_PARAMETER, recipeName);
+        String url = urlBuilder.build().toString();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
     }
 }
