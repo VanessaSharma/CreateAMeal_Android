@@ -1,31 +1,29 @@
 package com.epicodus.createameal;
 
-
 import android.content.Intent;
+import android.graphics.Typeface;
+import android.support.annotation.BinderThread;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.io.IOException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
-public class UserActivity extends AppCompatActivity {
+
+public class UserActivity extends AppCompatActivity implements View.OnClickListener{
     @Bind(R.id.userinfo) TextView mUserInfo;
-    @Bind(R.id.listView) ListView mListView;
-    public static final String TAG = UserActivity.class.getSimpleName();
+    @Bind(R.id.recipesButton) Button mRecipesButton;
+    @Bind(R.id.groceryListButton) Button mGroceryListButton;
+    @Bind(R.id.favoritesButton) Button mFavoritesButton;
+    @Bind(R.id.addARecipeButton) Button mAddARecipeButton;
+    @Bind(R.id.recipeEditText) EditText mRecipeEditText;
 
-    private String[] menu = new String[] {"Recipes", "Grocery List", "Favorites <3", "Add a Recipe"};
+//    public static final String TAG = UserActivity.class.getSimpleName();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,39 +31,34 @@ public class UserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user);
         ButterKnife.bind(this);
 
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, menu);
-        mListView.setAdapter(adapter);
-
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String menu = ((TextView)view).getText().toString();
-                Toast.makeText(UserActivity.this, menu, Toast.LENGTH_LONG).show();
-            }
-        });
 
         Intent intent = getIntent();
         String userName = intent.getStringExtra("userName");
         mUserInfo.setText("Welcome "+ userName);
+
+        mRecipesButton.setOnClickListener(this);
+        mGroceryListButton.setOnClickListener(this);
+        mFavoritesButton.setOnClickListener(this);
+        mAddARecipeButton.setOnClickListener(this);
     }
 
-    private void getRecipes(String recipeName){
-        final YummlyService yummlyService = new YummlyService();
-        yummlyService.findRecipes(recipeName, new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                try {
-                    String jsonData = response.body().string();
-                    Log.v(TAG, jsonData);
-                } catch (IOException e){
-                    e.printStackTrace();
-                }
-            }
-        });
+    @Override
+    public void onClick(View v) {
+        if(v == mRecipesButton) {
+            Intent intent = new Intent(UserActivity.this, RecipeResultsActivity.class);
+            startActivity(intent);
+        } else if (v == mGroceryListButton) {
+            Intent intent = new Intent(UserActivity.this, AddARecipeActivity.class);
+            startActivity(intent);
+        } else if (v == mFavoritesButton) {
+            Intent intent = new Intent(UserActivity.this, FavoritesActivity.class);
+            startActivity(intent);
+        } else if (v == mAddARecipeButton) {
+            String recipe = mRecipeEditText.getText().toString();
+            Intent intent = new Intent(UserActivity.this, AddARecipeActivity.class);
+            intent.putExtra("recipe", recipe);
+            startActivity(intent);
+        }
     }
 }
+

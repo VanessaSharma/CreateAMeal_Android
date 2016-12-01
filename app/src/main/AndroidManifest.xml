@@ -29,16 +29,18 @@
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.createameal.AccountActivity"></meta-data>
+                android:value="com.epicodus.createameal.AccountActivity" />
         </activity>
         <activity
             android:name=".LogInActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.createameal.LogInActivity"></meta-data>
+                android:value="com.epicodus.createameal.LogInActivity" />
         </activity>
-        <activity android:name=".RecipesActivity"></activity>
+        <activity android:name=".AddARecipeActivity" />
+        <activity android:name=".RecipeResultsActivity" />
+        <activity android:name=".FavoritesActivity"></activity>
     </application>
 
 </manifest>

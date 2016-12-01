@@ -10,7 +10,7 @@ import android.widget.EditText;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class RecipesActivity extends AppCompatActivity {
+public class AddARecipeActivity extends AppCompatActivity {
     @Bind(R.id.recipeLookup) EditText mRecipeLookup;
     @Bind(R.id.searchButton) Button mSearchButton;
 
@@ -24,7 +24,7 @@ public class RecipesActivity extends AppCompatActivity {
             @Override
              public void onClick(View v){
                 String recipeLookup = mRecipeLookup.getText().toString();
-                Intent intent = new Intent(RecipesActivity.this, RecipesActivity.class);
+                Intent intent = new Intent(AddARecipeActivity.this, RecipeResultsActivity.class);
                 intent.putExtra("recipeLookup", recipeLookup);
                 startActivity(intent);
             }

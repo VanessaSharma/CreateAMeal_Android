@@ -3,15 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000"
     tools:context="com.epicodus.createameal.UserActivity">
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/listView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="107dp" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView"
+        android:src="@drawable/user"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,5 +20,61 @@
         android:id="@+id/userinfo"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recipeEditText"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="60dp"
+        android:padding="5dp"
+        android:hint="Search recipe"
+        android:layout_above="@+id/recipesButton"
+        android:layout_centerHorizontal="true"
+        android:background="#fff" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Grocery List"
+        android:id="@+id/groceryListButton"
+        android:layout_marginLeft="60dp"
+        android:layout_gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:text="Fvorites"
+        android:id="@+id/favoritesButton"
+        android:layout_gravity="center"
+        android:layout_below="@+id/groceryListButton"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:text="Add Recipe"
+        android:id="@+id/addARecipeButton"
+        android:layout_gravity="center"
+        android:layout_below="@+id/favoritesButton"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        android:id="@+id/recipesButton"
+        android:layout_alignLeft="@+id/groceryListButton"
+        android:layout_alignRight="@+id/groceryListButton"
+        android:layout_above="@+id/groceryListButton"/>
+
 
 </RelativeLayout>
