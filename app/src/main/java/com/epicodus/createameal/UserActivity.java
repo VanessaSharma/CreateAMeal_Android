@@ -22,8 +22,6 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.addARecipeButton) Button mAddARecipeButton;
     @Bind(R.id.recipeEditText) EditText mRecipeEditText;
 
-//    public static final String TAG = UserActivity.class.getSimpleName();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,18 +43,18 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v == mRecipesButton) {
+            String recipe = mRecipeEditText.getText().toString();
             Intent intent = new Intent(UserActivity.this, RecipeResultsActivity.class);
+            intent.putExtra("recipe", recipe);
             startActivity(intent);
         } else if (v == mGroceryListButton) {
-            Intent intent = new Intent(UserActivity.this, AddARecipeActivity.class);
+            Intent intent = new Intent(UserActivity.this, GroceryListActivity.class);
             startActivity(intent);
         } else if (v == mFavoritesButton) {
             Intent intent = new Intent(UserActivity.this, FavoritesActivity.class);
             startActivity(intent);
         } else if (v == mAddARecipeButton) {
-            String recipe = mRecipeEditText.getText().toString();
             Intent intent = new Intent(UserActivity.this, AddARecipeActivity.class);
-            intent.putExtra("recipe", recipe);
             startActivity(intent);
         }
     }

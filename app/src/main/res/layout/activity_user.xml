@@ -18,6 +18,9 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/userinfo"
+        android:textColor="#fff"
+        android:layout_marginTop="160dp"
+        android:layout_above="@+id/recipeEditText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -26,7 +29,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/recipeEditText"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="40dp"
         android:layout_marginLeft="60dp"
         android:padding="5dp"
         android:hint="Search recipe"
@@ -49,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
-        android:text="Fvorites"
+        android:text="Favorites"
         android:id="@+id/favoritesButton"
         android:layout_gravity="center"
         android:layout_below="@+id/groceryListButton"

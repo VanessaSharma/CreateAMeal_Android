@@ -40,7 +40,8 @@
         </activity>
         <activity android:name=".AddARecipeActivity" />
         <activity android:name=".RecipeResultsActivity" />
-        <activity android:name=".FavoritesActivity"></activity>
+        <activity android:name=".FavoritesActivity" />
+        <activity android:name=".GroceryListActivity"></activity>
     </application>
 
 </manifest>
