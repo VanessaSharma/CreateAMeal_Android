@@ -2,6 +2,7 @@ package com.epicodus.createameal;
 
 import java.net.URL;
 
+import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
@@ -22,5 +23,8 @@ public class YummlyService {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
+
+        Call call = client.newCall(request);
+        call.enqueue(callback);
     }
 }
