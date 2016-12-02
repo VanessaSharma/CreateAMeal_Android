@@ -1,4 +1,4 @@
-package com.epicodus.createameal;
+package com.epicodus.createameal.models;
 
 import java.util.ArrayList;
 

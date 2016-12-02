@@ -1,4 +1,7 @@
-package com.epicodus.createameal;
+package com.epicodus.createameal.services;
+
+import com.epicodus.createameal.Constants;
+import com.epicodus.createameal.models.Recipe;
 
 import org.json.JSONArray;
 import org.json.JSONException;

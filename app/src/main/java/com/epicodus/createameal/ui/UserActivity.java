@@ -1,4 +1,4 @@
-package com.epicodus.createameal;
+package com.epicodus.createameal.ui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -10,6 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+
+import com.epicodus.createameal.R;
+import com.epicodus.createameal.services.YummlyService;
+import com.epicodus.createameal.models.Recipe;
 
 import java.io.IOException;
 import java.util.ArrayList;
