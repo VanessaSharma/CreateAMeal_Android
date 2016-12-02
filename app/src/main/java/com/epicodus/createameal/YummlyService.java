@@ -1,12 +1,20 @@
 package com.epicodus.createameal;
 
-import java.net.URL;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
+import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer;
+import se.akerfeldt.okhttp.signpost.SigningInterceptor;
 
 public class YummlyService {
     public static void findRecipes(String recipeName, Callback callback) {
@@ -27,4 +35,35 @@ public class YummlyService {
         Call call = client.newCall(request);
         call.enqueue(callback);
     }
+
+    public ArrayList<Recipe> processResults(Response response) {
+        ArrayList<Recipe> recipes = new ArrayList<>();
+
+        try {
+            String jsonData = response.body().string();
+            if (response.isSuccessful()) ;
+            {
+                JSONObject yummlyJSON = new JSONObject(jsonData);
+                JSONArray matchesJSON = yummlyJSON.getJSONArray("matches");
+                String name = recipeJSON.getString("recipeName");
+                ArrayList<String> ingredients = new ArrayList<>();
+                JSONArray ingredientsJSON = recipeJSON.getJSONObject("ingredients")
+                        .getJSONArray("ingredients");
+                for (int y = 0; y < ingredientsJSON.length(); y++) {
+                    ingredients.add(ingredientsJSON.get(y).toString());
+                    double rating = recipeJSON.getDouble("rating");
+                    String imageUrl = recipeJSON.getStrong("smallImageUrls");
+                    String time = recipeJSON.getString("totalTimeInSeconds");
+                }
+
+                Recipe recipe = new Recipe(name, ingredients, rating, imageUrl, time);
+                recipes.add(recipe);
+            }
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    } catch (JSONException e) {
+        e.printStackTrace();
+    }
+    return recipes;
 }
