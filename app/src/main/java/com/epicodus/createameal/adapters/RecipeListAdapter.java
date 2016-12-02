@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.epicodus.createameal.R;
 import com.epicodus.createameal.models.Recipe;
+import com.squareup.picasso.Picasso;
 
 
 
@@ -60,6 +61,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
         }
 
         public void bindRecipe(Recipe recipe) {
+            Picasso.with(mContext).load(recipe.getImageUrl()).into(mRecipeImageView);
             mRecipeNameTextView.setText(recipe.getName());
             mIngredientsTextView.setText(recipe.getIngredients().get(0));
             mRatingTextView.setText("Rating: " + recipe.getRating() + "/5");
