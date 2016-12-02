@@ -27,13 +27,9 @@ import okhttp3.Response;
 
 public class RecipeResultsActivity extends AppCompatActivity {
     public static final String TAG = RecipeResultsActivity.class.getSimpleName();
-
-
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
-    private RecipeListAdapter mAdapter;
-//    @Bind(R.id.recipeTextView) TextView mRecipeTextView;
-//    @Bind(R.id.listView) ListView mListView;
 
+    private RecipeListAdapter mAdapter;
     public ArrayList<Recipe> mRecipes = new ArrayList<>();
 
     @Override
@@ -45,17 +41,12 @@ public class RecipeResultsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String recipe = intent.getStringExtra("recipe");
-
-//        mRecipeTextView.setText("Here are all the recipes related to your search for " + recipe);
-
         getRecipes(recipe);
     }
 
     private void getRecipes(final String recipeName){
         final YummlyService yummlyService = new YummlyService();
-
         yummlyService.findRecipes(recipeName, new Callback() {
-
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
@@ -64,10 +55,7 @@ public class RecipeResultsActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) {
                 mRecipes = yummlyService.processResults(response);
-
                 RecipeResultsActivity.this.runOnUiThread(new Runnable() {
-
-
                     @Override
                     public void run() {
                         mAdapter = new RecipeListAdapter(getApplicationContext(), mRecipes);

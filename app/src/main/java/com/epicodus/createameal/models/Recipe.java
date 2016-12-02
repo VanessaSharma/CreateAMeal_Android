@@ -1,6 +1,7 @@
 package com.epicodus.createameal.models;
 
 import java.util.ArrayList;
+import org.parceler.Parcel;
 
 public class Recipe {
     private String mName;
@@ -9,6 +10,7 @@ public class Recipe {
     private String mImageUrl;
     private String mTime;
 
+    public Recipe(){}
 
     public Recipe(String name, ArrayList<String> ingredients, String rating, String imageUrl, String time) {
         this.mName = name;
