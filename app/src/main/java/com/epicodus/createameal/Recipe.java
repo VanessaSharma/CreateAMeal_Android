@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class Recipe {
     private String mName;
     private ArrayList<String> mIngredients = new ArrayList<>();
-    private double mRating;
+    private String mRating;
     private String mImageUrl;
     private String mTime;
 
 
-    public Recipe(String name, ArrayList<String> ingredients, double rating, String imageUrl, String time, String servings) {
+    public Recipe(String name, ArrayList<String> ingredients, String rating, String imageUrl, String time) {
         this.mName = name;
         this.mIngredients = ingredients;
         this.mRating = rating;
@@ -18,23 +18,23 @@ public class Recipe {
         this.mTime = time;
     }
 
-    public String getmName(){
+    public String getName(){
         return mName;
     }
 
-    public ArrayList<String> getmIngredients(){
+    public ArrayList<String> getIngredients(){
         return mIngredients;
     }
 
-    public double getmRating(){
+    public String getRating(){
         return mRating;
     }
 
-    public String getmImageUrl(){
+    public String getImageUrl(){
         return mImageUrl;
     }
 
-    public String getmTime(){
+    public String getTime(){
         return mTime;
     }
 

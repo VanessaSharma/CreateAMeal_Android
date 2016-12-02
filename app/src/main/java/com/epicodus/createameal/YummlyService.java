@@ -41,29 +41,33 @@ public class YummlyService {
 
         try {
             String jsonData = response.body().string();
-            if (response.isSuccessful()) ;
-            {
+            if (response.isSuccessful()) {
                 JSONObject yummlyJSON = new JSONObject(jsonData);
-                JSONArray matchesJSON = yummlyJSON.getJSONArray("matches");
-                String name = recipeJSON.getString("recipeName");
-                ArrayList<String> ingredients = new ArrayList<>();
-                JSONArray ingredientsJSON = recipeJSON.getJSONObject("ingredients")
-                        .getJSONArray("ingredients");
-                for (int y = 0; y < ingredientsJSON.length(); y++) {
-                    ingredients.add(ingredientsJSON.get(y).toString());
-                    double rating = recipeJSON.getDouble("rating");
-                    String imageUrl = recipeJSON.getStrong("smallImageUrls");
+                JSONArray foundrecipes = yummlyJSON.getJSONArray("matches");
+                for (int i = 0; i < foundrecipes.length(); i++) {
+                    JSONObject recipeJSON = foundrecipes.getJSONObject(i);
+                    String name = recipeJSON.getString("recipeName");
+                    String rating = recipeJSON.getString("rating");
+                    String imageUrl = recipeJSON.getString("smallImageUrls");
                     String time = recipeJSON.getString("totalTimeInSeconds");
+                    ArrayList<String> ingredients = new ArrayList<>();
+                    JSONArray ingredientsJSON = recipeJSON.getJSONObject("ingredients")
+                            .getJSONArray("ingredients");
+                    for (int y = 0; y < ingredientsJSON.length(); y++) {
+                        ingredients.add(ingredientsJSON.get(y).toString());
                 }
 
-                Recipe recipe = new Recipe(name, ingredients, rating, imageUrl, time);
-                recipes.add(recipe);
-            }
+                     Recipe recipe = new Recipe(name, ingredients, rating, imageUrl, time);
+                     recipes.add(recipe);
+                }
+                }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-    } catch (IOException e) {
-        e.printStackTrace();
-    } catch (JSONException e) {
-        e.printStackTrace();
+        return recipes;
     }
-    return recipes;
+
+
 }
