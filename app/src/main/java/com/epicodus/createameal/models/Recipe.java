@@ -6,13 +6,13 @@ import org.parceler.Parcel;
 public class Recipe {
     private String mName;
     private ArrayList<String> mIngredients = new ArrayList<>();
-    private String mRating;
+    private double mRating;
     private String mImageUrl;
     private String mTime;
 
     public Recipe(){}
 
-    public Recipe(String name, ArrayList<String> ingredients, String rating, String imageUrl, String time) {
+    public Recipe(String name, ArrayList<String> ingredients, double rating, String imageUrl, String time) {
         this.mName = name;
         this.mIngredients = ingredients;
         this.mRating = rating;
@@ -28,7 +28,7 @@ public class Recipe {
         return mIngredients;
     }
 
-    public String getRating(){
+    public double getRating(){
         return mRating;
     }
 
