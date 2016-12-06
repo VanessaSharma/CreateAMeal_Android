@@ -3,12 +3,14 @@ package com.epicodus.createameal.models;
 import java.util.ArrayList;
 import org.parceler.Parcel;
 
+
+@Parcel
 public class Recipe {
-    private String mName;
-    private ArrayList<String> mIngredients = new ArrayList<>();
-    private double mRating;
-    private String mImageUrl;
-    private String mTime;
+     String mName;
+     ArrayList<String> mIngredients = new ArrayList<>();
+     double mRating;
+     String mImageUrl;
+     String mTime;
 
     public Recipe(){}
 
