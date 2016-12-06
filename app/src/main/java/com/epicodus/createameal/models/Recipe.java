@@ -12,13 +12,14 @@ public class Recipe {
      String mImageUrl;
      String mTime;
 
+
     public Recipe(){}
 
     public Recipe(String name, ArrayList<String> ingredients, double rating, String imageUrl, String time) {
         this.mName = name;
         this.mIngredients = ingredients;
         this.mRating = rating;
-        this.mImageUrl = imageUrl;
+        this.mImageUrl = getLargeImageUrl(imageUrl);
         this.mTime = time;
     }
 
@@ -42,4 +43,8 @@ public class Recipe {
         return mTime;
     }
 
+    public String getLargeImageUrl(String imageUrl) {
+        String largeImageUrl = imageUrl.substring(0, imageUrl.length() - 6).concat("o.jpg");
+        return largeImageUrl;
+    }
 }
