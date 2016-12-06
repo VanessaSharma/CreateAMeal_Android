@@ -49,7 +49,7 @@ public class YummlyService {
                     JSONObject recipeJSON = foundrecipes.getJSONObject(i);
                     String name = recipeJSON.getString("recipeName");
                     String rating = recipeJSON.getString("rating");
-                    String imageUrl = recipeJSON.getString("smallImageUrls");
+                    String imageUrl = recipeJSON.getJSONObject("imageUrlsBySize").getString("90");
                     String time = recipeJSON.getString("totalTimeInSeconds");
                     ArrayList<String> ingredients = new ArrayList<>();
                     JSONArray ingredientsJSON = recipeJSON.getJSONArray("ingredients");
