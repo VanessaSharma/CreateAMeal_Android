@@ -42,7 +42,8 @@
         <activity android:name=".ui.RecipeResultsActivity" />
         <activity android:name=".ui.FavoritesActivity" />
         <activity android:name=".ui.GroceryListActivity" />
-        <activity android:name=".ui.RecipeDetailActivity"></activity>
+        <activity android:name=".ui.RecipeDetailActivity" />
+        <activity android:name=".ui.SavedRecipeListActivity" />
     </application>
 
 </manifest>

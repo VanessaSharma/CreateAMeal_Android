@@ -72,6 +72,17 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:text="My Saved Recipes"
+        android:id="@+id/savedRecipeButton"
+        android:visibility="visible"
+        android:layout_below="@+id/addARecipeButton"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Search"
         android:id="@+id/recipesButton"
         android:layout_alignLeft="@+id/groceryListButton"

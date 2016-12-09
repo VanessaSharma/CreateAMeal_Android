@@ -49,6 +49,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.favoritesButton) Button mFavoritesButton;
     @Bind(R.id.addARecipeButton) Button mAddARecipeButton;
     @Bind(R.id.recipeEditText) EditText mRecipeEditText;
+    @Bind(R.id.savedRecipeButton) Button mSavedRecipeButton;
 
     public ArrayList<Recipe> mRecipes = new ArrayList<>();
 
@@ -86,6 +87,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         String userName = intent.getStringExtra("userName");
         mUserInfo.setText("Welcome "+ userName);
 
+        mSavedRecipeButton.setOnClickListener(this);
         mRecipesButton.setOnClickListener(this);
         mGroceryListButton.setOnClickListener(this);
         mFavoritesButton.setOnClickListener(this);
@@ -109,6 +111,9 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         } else if (v == mAddARecipeButton) {
             Intent intent = new Intent(UserActivity.this, AddARecipeActivity.class);
+            startActivity(intent);
+        } else if ( v == mSavedRecipeButton) {
+            Intent intent = new Intent(UserActivity.this, SavedRecipeListActivity.class);
             startActivity(intent);
         }
     }
