@@ -8,5 +8,7 @@ public class Constants {
     public static final String YUMMLY_QUERY_PARAMETER = "q";
     public static final String YUMMLY_KEY_QUERY_PARAMETER="_app_key";
     public static final String YUMMLY_ID_QUERY_PARAMETER="_app_id";
+    public static final String PREFERENCES_KEY_KEY = "_app_key";
+    public static final String PREFERENCES_ID_KEY = "_app_id";
 }
 
