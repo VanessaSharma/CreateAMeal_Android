@@ -1,46 +1,48 @@
 package com.epicodus.createameal.models;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import org.parceler.Parcel;
 
 
 @Parcel
 public class Recipe {
-     String mName;
-     ArrayList<String> mIngredients = new ArrayList<>();
-     double mRating;
-     String mImageUrl;
-     String mTime;
+     String name;
+     List<String> ingredients = new ArrayList<>();
+     double rating;
+     String imageUrl;
+     String time;
 
 
     public Recipe(){}
 
     public Recipe(String name, ArrayList<String> ingredients, double rating, String imageUrl, String time) {
-        this.mName = name;
-        this.mIngredients = ingredients;
-        this.mRating = rating;
-        this.mImageUrl = getLargeImageUrl(imageUrl);
-        this.mTime = time;
+        this.name = name;
+        this.ingredients = ingredients;
+        this.rating = rating;
+        this.imageUrl = getLargeImageUrl(imageUrl);
+        this.time = time;
     }
 
     public String getName(){
-        return mName;
+        return name;
     }
 
-    public ArrayList<String> getIngredients(){
-        return mIngredients;
+    public List<String> getIngredients(){
+        return ingredients;
     }
 
     public double getRating(){
-        return mRating;
+        return rating;
     }
 
     public String getImageUrl(){
-        return mImageUrl;
+        return imageUrl;
     }
 
     public String getTime(){
-        return mTime;
+        return time;
     }
 
     public String getLargeImageUrl(String imageUrl) {
