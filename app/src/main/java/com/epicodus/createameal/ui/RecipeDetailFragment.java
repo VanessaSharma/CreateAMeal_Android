@@ -10,10 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.epicodus.createameal.R;
 import com.epicodus.createameal.models.Recipe;
+import com.epicodus.createameal.Constants;
 import com.squareup.picasso.Picasso;
+
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.parceler.Parcels;
 
@@ -76,6 +82,8 @@ public class RecipeDetailFragment extends Fragment implements View.OnClickListen
 
         mNameLabel.setOnClickListener(this);
 
+        mSaveRecipeButton.setOnClickListener(this);
+
         return view;
     }
 
@@ -85,6 +93,13 @@ public class RecipeDetailFragment extends Fragment implements View.OnClickListen
             Intent nameIntent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse(mRecipe.getName()));
             startActivity(nameIntent);
+        }
+        if (v == mSaveRecipeButton) {
+            DatabaseReference recipeRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_RECIPES);
+            recipeRef.push().setValue(mRecipe);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }
 }
