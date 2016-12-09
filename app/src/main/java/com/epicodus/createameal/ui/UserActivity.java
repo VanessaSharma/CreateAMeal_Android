@@ -10,11 +10,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 
 import com.epicodus.createameal.R;
 import com.epicodus.createameal.services.YummlyService;
 import com.epicodus.createameal.models.Recipe;
+import com.epicodus.createameal.Constants;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,6 +38,10 @@ import okhttp3.Response;
 public class UserActivity extends AppCompatActivity implements View.OnClickListener{
    public static final String TAG = UserActivity.class.getSimpleName();
 
+    private DatabaseReference mSearchedRecipeReference;
+
+    private ValueEventListener mSearchedRecipeReferenceListener;
+
 
     @Bind(R.id.userinfo) TextView mUserInfo;
     @Bind(R.id.recipesButton) Button mRecipesButton;
@@ -41,6 +54,29 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        mSearchedRecipeReference = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(Constants.FIREBASE_CHILD_SEARCHED_RECIPE);
+
+        mSearchedRecipeReferenceListener = mSearchedRecipeReference.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot recipeSnapshot : dataSnapshot.getChildren()) {
+                    String recipe = recipeSnapshot.getValue().toString();
+                    Log.d("Recipes updated", "recipe: " + recipe);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+        });
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
         ButterKnife.bind(this);
@@ -61,6 +97,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if(v == mRecipesButton) {
             String recipe = mRecipeEditText.getText().toString();
+            saveRecipeToFirebase(recipe);
             Intent intent = new Intent(UserActivity.this, RecipeResultsActivity.class);
             intent.putExtra("recipe", recipe);
             startActivity(intent);
@@ -74,6 +111,15 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(UserActivity.this, AddARecipeActivity.class);
             startActivity(intent);
         }
+    }
+    public void saveRecipeToFirebase(String recipe) {
+        mSearchedRecipeReference.push().setValue(recipe);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mSearchedRecipeReference.removeEventListener(mSearchedRecipeReferenceListener);
     }
 
     private void getRecipes(final String recipeName){

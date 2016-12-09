@@ -8,5 +8,6 @@ public class Constants {
     public static final String YUMMLY_QUERY_PARAMETER = "q";
     public static final String YUMMLY_KEY_QUERY_PARAMETER="_app_key";
     public static final String YUMMLY_ID_QUERY_PARAMETER="_app_id";
+    public static final String FIREBASE_CHILD_SEARCHED_RECIPE = "searchedName";
 }
 
