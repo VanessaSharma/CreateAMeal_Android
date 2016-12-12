@@ -44,30 +44,31 @@
         android:layout_marginLeft="60dp"
         android:layout_gravity="center"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"></Button>
 
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
-        android:text="Favorites"
-        android:id="@+id/favoritesButton"
-        android:layout_gravity="center"
-        android:layout_below="@+id/websiteButton"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
-        android:text="Add Recipe"
-        android:id="@+id/addARecipeButton"
-        android:layout_gravity="center"
-        android:layout_below="@+id/favoritesButton"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+    <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="60dp"-->
+        <!--android:text="Favorites"-->
+        <!--android:id="@+id/favoritesButton"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_below="@+id/websiteButton"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_centerHorizontal="true" />-->
+
+    <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="60dp"-->
+        <!--android:text="Add Recipe"-->
+        <!--android:id="@+id/addARecipeButton"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_below="@+id/favoritesButton"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_centerHorizontal="true" />-->
 
     <Button
         android:layout_width="match_parent"
@@ -76,7 +77,7 @@
         android:text="My Saved Recipes"
         android:id="@+id/savedRecipeButton"
         android:visibility="visible"
-        android:layout_below="@+id/addARecipeButton"
+        android:layout_below="@+id/websiteButton"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
