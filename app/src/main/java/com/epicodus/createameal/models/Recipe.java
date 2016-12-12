@@ -23,7 +23,6 @@ public class Recipe {
         this.ingredients = ingredients;
         this.rating = rating;
         this.imageUrl = imageUrl;
-        this.imageUrl = getLargeImageUrl(imageUrl);
         this.time = time;
 
     }
@@ -48,10 +47,6 @@ public class Recipe {
         return time;
     }
 
-    public String getLargeImageUrl(String imageUrl) {
-        String largeImageUrl = imageUrl.substring(0, imageUrl.length() - 6).concat("o.jpg");
-        return largeImageUrl;
-    }
     public String getPushId() {
         return pushId;
     }
