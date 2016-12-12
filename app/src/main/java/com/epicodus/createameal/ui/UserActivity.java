@@ -84,7 +84,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
 
 
         Intent intent = getIntent();
-        String user = intent.getStringExtra("userName");
+        String user = intent.getStringExtra("user");
         mUserInfo.setText("Welcome "+ user);
 
         mSavedRecipeButton.setOnClickListener(this);

@@ -54,19 +54,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSignUpButton.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
-//
-//    mAuthListener = new FirebaseAuth.AuthStateListener() {
-//
-//        @Override
-//        public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-//            FirebaseUser user  = firebaseAuth.getCurrentUser();
-//            if (user != null) {
-//                getSupportActionBar().setTitle("Welcome, " + user.getDisplayName() + "!");
-//            } else {
-//
-//            }
-//        }
-//    };
+
+    mAuthListener = new FirebaseAuth.AuthStateListener() {
+
+        @Override
+        public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+            FirebaseUser user  = firebaseAuth.getCurrentUser();
+            if (user != null) {
+                getSupportActionBar().setTitle("Welcome, " + user.getDisplayName() + "!");
+            } else {
+
+            }
+        }
+    };
 }
 
     @Override
