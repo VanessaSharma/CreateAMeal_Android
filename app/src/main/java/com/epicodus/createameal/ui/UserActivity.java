@@ -2,6 +2,7 @@ package com.epicodus.createameal.ui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.support.annotation.BinderThread;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,7 +46,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
 
     @Bind(R.id.userInfo) TextView mUserInfo;
     @Bind(R.id.recipesButton) Button mRecipesButton;
-    @Bind(R.id.groceryListButton) Button mGroceryListButton;
+    @Bind(R.id.websiteButton) Button mWebsiteButton;
     @Bind(R.id.favoritesButton) Button mFavoritesButton;
     @Bind(R.id.addARecipeButton) Button mAddARecipeButton;
     @Bind(R.id.recipeEditText) EditText mRecipeEditText;
@@ -89,7 +90,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
 
         mSavedRecipeButton.setOnClickListener(this);
         mRecipesButton.setOnClickListener(this);
-        mGroceryListButton.setOnClickListener(this);
+        mWebsiteButton.setOnClickListener(this);
         mFavoritesButton.setOnClickListener(this);
         mAddARecipeButton.setOnClickListener(this);
 
@@ -103,9 +104,10 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(UserActivity.this, RecipeResultsActivity.class);
             intent.putExtra("recipe", recipe);
             startActivity(intent);
-        } else if (v == mGroceryListButton) {
-            Intent intent = new Intent(UserActivity.this, GroceryListActivity.class);
-            startActivity(intent);
+        } else if (v == mWebsiteButton) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("http://www.yummly.com/"));
+            startActivity(webIntent);
         } else if (v == mFavoritesButton) {
             Intent intent = new Intent(UserActivity.this, FavoritesActivity.class);
             startActivity(intent);

@@ -73,6 +73,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
         public void bindRecipe(Recipe recipe) {
             Picasso.with(mContext)
                     .load(recipe.getImageUrl())
+                    .resize(MAX_WIDTH, MAX_HEIGHT)
                     .into(mRecipeImageView);
 
             mRecipeNameTextView.setText(recipe.getName());

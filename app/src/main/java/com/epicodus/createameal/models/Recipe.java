@@ -22,8 +22,10 @@ public class Recipe {
         this.name = name;
         this.ingredients = ingredients;
         this.rating = rating;
+        this.imageUrl = imageUrl;
         this.imageUrl = getLargeImageUrl(imageUrl);
         this.time = time;
+
     }
 
     public String getName(){

@@ -39,8 +39,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Grocery List"
-        android:id="@+id/groceryListButton"
+        android:text="Go To Yummly!"
+        android:id="@+id/websiteButton"
         android:layout_marginLeft="60dp"
         android:layout_gravity="center"
         android:layout_centerVertical="true"
@@ -54,7 +54,7 @@
         android:text="Favorites"
         android:id="@+id/favoritesButton"
         android:layout_gravity="center"
-        android:layout_below="@+id/groceryListButton"
+        android:layout_below="@+id/websiteButton"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
@@ -85,9 +85,9 @@
         android:layout_height="wrap_content"
         android:text="Search"
         android:id="@+id/recipesButton"
-        android:layout_alignLeft="@+id/groceryListButton"
-        android:layout_alignRight="@+id/groceryListButton"
-        android:layout_above="@+id/groceryListButton"/>
+        android:layout_alignLeft="@+id/websiteButton"
+        android:layout_alignRight="@+id/websiteButton"
+        android:layout_above="@+id/websiteButton"/>
 
 
 </RelativeLayout>
