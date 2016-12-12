@@ -43,7 +43,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
     private ValueEventListener mSearchedRecipeReferenceListener;
 
 
-    @Bind(R.id.userinfo) TextView mUserInfo;
+    @Bind(R.id.userInfo) TextView mUserInfo;
     @Bind(R.id.recipesButton) Button mRecipesButton;
     @Bind(R.id.groceryListButton) Button mGroceryListButton;
     @Bind(R.id.favoritesButton) Button mFavoritesButton;
@@ -84,8 +84,8 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
 
 
         Intent intent = getIntent();
-        String userName = intent.getStringExtra("userName");
-        mUserInfo.setText("Welcome "+ userName);
+        String user = intent.getStringExtra("userName");
+        mUserInfo.setText("Welcome "+ user);
 
         mSavedRecipeButton.setOnClickListener(this);
         mRecipesButton.setOnClickListener(this);

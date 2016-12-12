@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000"
-    tools:context="com.epicodus.createameal.UserActivity">
+    tools:context="com.epicodus.createameal.ui.UserActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/userinfo"
+        android:id="@+id/userInfo"
         android:textColor="#fff"
         android:layout_marginTop="160dp"
         android:layout_above="@+id/recipeEditText"

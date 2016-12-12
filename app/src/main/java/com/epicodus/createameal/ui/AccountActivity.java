@@ -86,13 +86,13 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void createNewUser() {
-        final String name = mNameEditText.getText().toString().trim();
+        mName = mNameEditText.getText().toString().trim();
         final String email = mEmailEditText.getText().toString().trim();
         String password = mPasswordEditText.getText().toString().trim();
         String confirmPassword = mConfirmPasswordEditText.getText().toString().trim();
 
         boolean validEmail = isValidEmail(email);
-        boolean validName = isValidName(name);
+        boolean validName = isValidName(mName);
         boolean validPassword = isValidPassword(password, confirmPassword);
 
         if (!validEmail || !validName || !validPassword) return;
@@ -144,6 +144,8 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     finish();
+                } else {
+                    Log.d("on login", "user is null");
                 }
             }
         };
