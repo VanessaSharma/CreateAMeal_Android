@@ -3,7 +3,7 @@
 
 > **By Vanessa Palacios Sharma**
 
-![screenshot of project running](apppreview.png)
+![screenshot of project running](screenshot.jpg)
 
 ## __Description__
 
