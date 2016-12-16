@@ -14,6 +14,7 @@ public class Recipe {
      String imageUrl;
      String time;
     private String pushId;
+    String index;
 
 
     public Recipe(){}
@@ -24,6 +25,7 @@ public class Recipe {
         this.rating = rating;
         this.imageUrl = imageUrl;
         this.time = time;
+        this.index = "not_specified";
 
     }
 
@@ -53,6 +55,14 @@ public class Recipe {
 
     public void setPushId(String pushId) {
         this.pushId = pushId;
+    }
+
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
     }
 }
 
