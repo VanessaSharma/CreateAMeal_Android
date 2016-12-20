@@ -82,9 +82,8 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         ButterKnife.bind(this);
 
 
-        Intent intent = getIntent();
-        String user = intent.getStringExtra("user");
-        mUserInfo.setText("Welcome "+ user);
+
+        mUserInfo.setText("Welcome!");
 
         mSavedRecipeButton.setOnClickListener(this);
         mRecipesButton.setOnClickListener(this);
