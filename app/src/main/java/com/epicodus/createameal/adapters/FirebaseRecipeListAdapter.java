@@ -7,6 +7,7 @@ import android.support.v4.view.MotionEventCompat;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.epicodus.createameal.adapters.FirebaseRecipeViewHolder;
 import com.epicodus.createameal.models.Recipe;
 import com.epicodus.createameal.ui.RecipeDetailActivity;
 import com.epicodus.createameal.util.ItemTouchHelperAdapter;
@@ -74,6 +75,7 @@ public class FirebaseRecipeListAdapter extends FirebaseRecyclerAdapter<Recipe, F
     @Override
     protected void populateViewHolder(final FirebaseRecipeViewHolder viewHolder, Recipe model, int position) {
         viewHolder.bindRecipe(model);
+
         viewHolder.mRecipeImageView.setOnTouchListener(new View.OnTouchListener() {
 
             @Override
@@ -84,13 +86,14 @@ public class FirebaseRecipeListAdapter extends FirebaseRecyclerAdapter<Recipe, F
                 return false;
             }
         });
+
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, RecipeDetailActivity.class);
                 intent.putExtra("position", viewHolder.getAdapterPosition());
-                intent.putExtra("restaurants", Parcels.wrap(mRecipes));
+                intent.putExtra("recipes", Parcels.wrap(mRecipes));
                 mContext.startActivity(intent);
             }
         });
@@ -111,11 +114,11 @@ public class FirebaseRecipeListAdapter extends FirebaseRecyclerAdapter<Recipe, F
     }
 
     private void setIndexInFirebase() {
-        for (Recipe restaurant : mRecipes) {
-            int index = mRecipes.indexOf(restaurant);
+        for (Recipe recipe : mRecipes) {
+            int index = mRecipes.indexOf(recipe);
             DatabaseReference ref = getRef(index);
-            restaurant.setIndex(Integer.toString(index));
-            ref.setValue(restaurant);
+            recipe.setIndex(Integer.toString(index));
+            ref.setValue(recipe);
         }
     }
 

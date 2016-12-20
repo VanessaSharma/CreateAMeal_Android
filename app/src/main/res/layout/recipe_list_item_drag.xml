@@ -11,7 +11,7 @@
         <ImageView
             android:layout_width="130dp"
             android:layout_height="100dp"
-            android:id="@+id/restaurantImageView"
+            android:id="@+id/recipeImageView"
             android:src="@drawable/pancakes"
             android:scaleType="centerCrop"/>
 
@@ -36,7 +36,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/recipeNameTextView"
+            android:id="@+id/nameTextView"
             android:textSize="20dp"
             android:textStyle="bold"
             android:text="Recipe Name"

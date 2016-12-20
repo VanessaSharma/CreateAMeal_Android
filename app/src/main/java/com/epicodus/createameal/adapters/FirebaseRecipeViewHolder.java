@@ -53,30 +53,3 @@ public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder {
         ratingTextView.setText("Rating: " + recipe.getRating() + "/5");
     }
 }
-//    @Override
-//    public void onClick(View view) {
-//        final ArrayList<Recipe> recipes = new ArrayList<>();
-//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_RECIPES);
-//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-//
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                    recipes.add(snapshot.getValue(Recipe.class));
-//                }
-//
-//                int itemPosition = getLayoutPosition();
-//
-//                Intent intent = new Intent(mContext, RecipeDetailActivity.class);
-//                intent.putExtra("position", itemPosition + "");
-//                intent.putExtra("recipes", Parcels.wrap(recipes));
-//
-//                mContext.startActivity(intent);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//            }
-//        });
-//    }
-//}
