@@ -45,6 +45,7 @@ public class RecipeResultsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recipe_results);
         ButterKnife.bind(this);
 
+        int startingPosition = getIntent().getIntExtra("position", 0);
 
         Intent intent = getIntent();
         String recipe = intent.getStringExtra("recipe");
