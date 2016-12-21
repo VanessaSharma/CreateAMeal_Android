@@ -52,7 +52,7 @@ public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder implements
                 .centerCrop()
                 .into(mRecipeImageView);
 
-        nameTextView.setText(recipe.getName());
+//        nameTextView.setText(recipe.getName());
         ingredientsTextView.setText(recipe.getIngredients().get(0));
         ratingTextView.setText("Rating: " + recipe.getRating() + "/5");
     }

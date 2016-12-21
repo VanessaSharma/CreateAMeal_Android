@@ -38,8 +38,8 @@ public class RecipeDetailFragment extends Fragment implements View.OnClickListen
     @Bind(R.id.recipeNameTextView) TextView mNameLabel;
     @Bind(R.id.ingredientsTextView) TextView mIngredientsLabel;
     @Bind(R.id.ratingTextView) TextView mRatingLabel;
-    @Bind(R.id.timeTextView) TextView mTimeTextView;
-    @Bind(R.id.ratingsTextView) TextView mRatingsTextView;
+//    @Bind(R.id.timeTextView) TextView mTimeTextView;
+//    @Bind(R.id.ratingsTextView) TextView mRatingsTextView;
     @Bind(R.id.saveRecipeButton) TextView mSaveRecipeButton;
 
     private Recipe mRecipe;
@@ -78,8 +78,8 @@ public class RecipeDetailFragment extends Fragment implements View.OnClickListen
 
         mNameLabel.setText(mRecipe.getName());
         mIngredientsLabel.setText(android.text.TextUtils.join(", ", mRecipe.getIngredients()));
-        mRatingLabel.setText(Double.toString(mRecipe.getRating()) + "/5");
-        mTimeTextView.setText(mRecipe.getTime());
+//        mRatingLabel.setText(Double.toString(mRecipe.getRating()) + "/5");
+//        mTimeTextView.setText(mRecipe.getTime());
         mIngredientsLabel.setText(android.text.TextUtils.join(", ", mRecipe.getIngredients()));
 
 
