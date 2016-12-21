@@ -1,5 +1,6 @@
 package com.epicodus.createameal.ui;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -20,6 +21,7 @@ import com.epicodus.createameal.R;
 import com.epicodus.createameal.adapters.RecipeListAdapter;
 import com.epicodus.createameal.models.Recipe;
 import com.epicodus.createameal.services.YummlyService;
+import com.epicodus.createameal.util.OnRecipeSelectedListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,6 +40,7 @@ public class RecipeListFragment extends Fragment {
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
     private String mRecentRecipe;
+    private OnRecipeSelectedListener mOnRecipeSelectedListener;
 
     public RecipeListFragment() {
     }
@@ -65,6 +68,17 @@ public class RecipeListFragment extends Fragment {
 
         return view;
     }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            mOnRecipeSelectedListener = (OnRecipeSelectedListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + e.getMessage());
+        }
+    }
+
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -113,7 +127,7 @@ public class RecipeListFragment extends Fragment {
 
                     @Override
                     public void run() {
-                        mAdapter = new RecipeListAdapter(getActivity(), mRecipes);
+                        mAdapter = new RecipeListAdapter(getActivity(), mRecipes, mOnRecipeSelectedListener);
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
                         mRecyclerView.setLayoutManager(layoutManager);

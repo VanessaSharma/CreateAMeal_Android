@@ -34,7 +34,7 @@ public class SavedRecipeListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_recipe_results);
+        setContentView(R.layout.activity_saved_recipe_list);
 //        ButterKnife.bind(this);
 //
 //
