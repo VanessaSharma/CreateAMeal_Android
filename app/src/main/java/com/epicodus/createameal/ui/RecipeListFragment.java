@@ -95,10 +95,10 @@ public class RecipeListFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    public void getRecipes(String name) {
+    public void getRecipes(String recipeName) {
         final YummlyService yummlyService = new YummlyService();
 
-        yummlyService.findRecipes(name, new Callback() {
+        yummlyService.findRecipes(recipeName, new Callback() {
 
             @Override
             public void onFailure(Call call, IOException e) {
@@ -124,8 +124,8 @@ public class RecipeListFragment extends Fragment {
         });
     }
 
-    private void addToSharedPreferences(String location) {
-        mEditor.putString(Constants.PREFERENCES_NAME_KEY, location).apply();
+    private void addToSharedPreferences(String name) {
+        mEditor.putString(Constants.PREFERENCES_NAME_KEY, name).apply();
     }
 
 }
