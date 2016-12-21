@@ -4,7 +4,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.epicodus.createameal.Constants;
 import com.epicodus.createameal.R;
 import com.epicodus.createameal.adapters.RecipePagerAdapter;
 import com.epicodus.createameal.models.Recipe;
@@ -28,8 +27,9 @@ public class RecipeDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recipe_detail);
         ButterKnife.bind(this);
 
-        mRecipes = Parcels.unwrap(getIntent().getParcelableExtra(Constants.EXTRA_KEY_RECIPES));
-        int startingPosition = getIntent().getIntExtra(Constants.EXTRA_KEY_POSITION, 0);
+        mRecipes = Parcels.unwrap(getIntent().getParcelableExtra("recipes"));
+
+        int startingPosition = getIntent().getIntExtra("position", 0);
 
         adapterViewPager = new RecipePagerAdapter(getSupportFragmentManager(), mRecipes);
         mViewPager.setAdapter(adapterViewPager);

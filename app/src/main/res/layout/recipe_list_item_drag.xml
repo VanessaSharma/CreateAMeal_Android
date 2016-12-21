@@ -62,8 +62,7 @@
                 android:text="Rating"
                 android:id="@+id/ratingTextView"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:textColor="@color/colorAccent"/>
-        </RelativeLayout>
+                android:layout_alignParentRight="true" />
+    </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

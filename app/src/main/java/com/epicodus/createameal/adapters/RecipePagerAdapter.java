@@ -21,7 +21,7 @@ public class RecipePagerAdapter extends FragmentPagerAdapter{
 
     @Override
     public Fragment getItem(int position) {
-        return RecipeDetailFragment.newInstance(mRecipes, position);
+        return RecipeDetailFragment.newInstance(mRecipes.get(position));
     }
 
     @Override

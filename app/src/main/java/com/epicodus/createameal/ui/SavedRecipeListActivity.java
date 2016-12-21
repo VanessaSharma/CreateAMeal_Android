@@ -1,3 +1,4 @@
+
 package com.epicodus.createameal.ui;
 
 import android.support.v7.app.AppCompatActivity;
@@ -20,11 +21,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class SavedRecipeListActivity extends AppCompatActivity {
+public class SavedRecipeListActivity extends AppCompatActivity implements OnStartDragListener{
     private FirebaseRecipeListAdapter mFirebaseAdapter;
     private ItemTouchHelper mItemTouchHelper;
 
@@ -34,43 +34,43 @@ public class SavedRecipeListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_saved_recipe_list);
-//        ButterKnife.bind(this);
-//
-//
-//        setUpFirebaseAdapter();
-//    }
-//
-//    private void setUpFirebaseAdapter() {
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        String uid = user.getUid();
-//
-//
-//        Query query = FirebaseDatabase.getInstance()
-//                .getReference(Constants.FIREBASE_CHILD_RECIPES)
-//                .child(uid)
-//                .orderByChild(Constants.FIREBASE_QUERY_INDEX);
-//
-//        mFirebaseAdapter = new FirebaseRecipeListAdapter(Recipe.class, R.layout.recipe_list_item_drag, FirebaseRecipeViewHolder.class,
-//                        query, this, this);
-//
-//        mRecyclerView.setHasFixedSize(true);
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        mRecyclerView.setAdapter(mFirebaseAdapter);
-//
-//
-//        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback( mFirebaseAdapter);
-//        mItemTouchHelper = new ItemTouchHelper(callback);
-//        mItemTouchHelper.attachToRecyclerView(mRecyclerView);
-//    }
-//    @Override
-//    public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
-//        mItemTouchHelper.startDrag(viewHolder);
-//    }
-//
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        mFirebaseAdapter.cleanup();
+        setContentView(R.layout.activity_recipe_results);
+        ButterKnife.bind(this);
+
+
+        setUpFirebaseAdapter();
+    }
+
+    private void setUpFirebaseAdapter() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
+
+        Query query = FirebaseDatabase.getInstance()
+                .getReference(Constants.FIREBASE_CHILD_RECIPES)
+                .child(uid)
+                .orderByChild(Constants.FIREBASE_QUERY_INDEX);
+
+        mFirebaseAdapter = new FirebaseRecipeListAdapter(Recipe.class, R.layout.recipe_list_item_drag, FirebaseRecipeViewHolder.class,
+                query, this, this);
+
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(mFirebaseAdapter);
+
+
+        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback( mFirebaseAdapter);
+        mItemTouchHelper = new ItemTouchHelper(callback);
+        mItemTouchHelper.attachToRecyclerView(mRecyclerView);
+    }
+    @Override
+    public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
+        mItemTouchHelper.startDrag(viewHolder);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mFirebaseAdapter.cleanup();
     }
 }

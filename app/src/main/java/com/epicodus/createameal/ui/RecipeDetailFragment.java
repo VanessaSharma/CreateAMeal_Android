@@ -25,8 +25,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.parceler.Parcels;
 
-import java.util.ArrayList;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -34,24 +32,27 @@ public class RecipeDetailFragment extends Fragment implements View.OnClickListen
     private static final int MAX_WIDTH = 400;
     private static final int MAX_HEIGHT = 300;
 
-    @Bind(R.id.recipeImageView) ImageView mImageLabel;
-    @Bind(R.id.recipeNameTextView) TextView mNameLabel;
-    @Bind(R.id.ingredientsTextView) TextView mIngredientsLabel;
-    @Bind(R.id.ratingTextView) TextView mRatingLabel;
-//    @Bind(R.id.timeTextView) TextView mTimeTextView;
-//    @Bind(R.id.ratingsTextView) TextView mRatingsTextView;
-    @Bind(R.id.saveRecipeButton) TextView mSaveRecipeButton;
+    @Bind(R.id.recipeImageView)
+    ImageView mImageLabel;
+    @Bind(R.id.recipeNameTextView)
+    TextView mNameLabel;
+    @Bind(R.id.ingredientsTextView)
+    TextView mIngredientsLabel;
+    @Bind(R.id.ratingTextView)
+    TextView mRatingLabel;
+    @Bind(R.id.timeTextView)
+    TextView mTimeTextView;
+    @Bind(R.id.ratingsTextView)
+    TextView mRatingsTextView;
+    @Bind(R.id.saveRecipeButton)
+    TextView mSaveRecipeButton;
 
     private Recipe mRecipe;
-    private ArrayList<Recipe> mRecipes;
-    private int mPosition;
 
-    public static RecipeDetailFragment newInstance(ArrayList<Recipe> recipes, Integer position) {
+    public static RecipeDetailFragment newInstance(Recipe recipe) {
         RecipeDetailFragment recipeDetailFragment = new RecipeDetailFragment();
         Bundle args = new Bundle();
-        args.putParcelable(Constants.EXTRA_KEY_RECIPES, Parcels.wrap(recipes));
-        args.putInt(Constants.EXTRA_KEY_POSITION, position);
-
+        args.putParcelable("recipe", Parcels.wrap(recipe));
         recipeDetailFragment.setArguments(args);
         return recipeDetailFragment;
     }
@@ -59,9 +60,7 @@ public class RecipeDetailFragment extends Fragment implements View.OnClickListen
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mRecipes = Parcels.unwrap(getArguments().getParcelable(Constants.EXTRA_KEY_RECIPES));
-        mPosition = getArguments().getInt(Constants.EXTRA_KEY_POSITION);
-        mRecipe = mRecipes.get(mPosition);
+        mRecipe = Parcels.unwrap(getArguments().getParcelable("recipe"));
     }
 
     @Override
@@ -78,8 +77,8 @@ public class RecipeDetailFragment extends Fragment implements View.OnClickListen
 
         mNameLabel.setText(mRecipe.getName());
         mIngredientsLabel.setText(android.text.TextUtils.join(", ", mRecipe.getIngredients()));
-//        mRatingLabel.setText(Double.toString(mRecipe.getRating()) + "/5");
-//        mTimeTextView.setText(mRecipe.getTime());
+        mRatingLabel.setText(Double.toString(mRecipe.getRating()) + "/5");
+        mTimeTextView.setText(mRecipe.getTime());
         mIngredientsLabel.setText(android.text.TextUtils.join(", ", mRecipe.getIngredients()));
 
 
@@ -100,7 +99,6 @@ public class RecipeDetailFragment extends Fragment implements View.OnClickListen
         if (v == mSaveRecipeButton) {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String uid = user.getUid();
-
             DatabaseReference restaurantRef = FirebaseDatabase
                     .getInstance()
                     .getReference(Constants.FIREBASE_CHILD_RECIPES)

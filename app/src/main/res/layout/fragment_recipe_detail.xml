@@ -4,114 +4,124 @@
     android:layout_height="match_parent"
     tools:context="com.epicodus.createameal.ui.RecipeDetailFragment">
 
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
-
-    <ImageView
-        android:layout_width="130dp"
-        android:layout_height="150dp"
-        android:id="@+id/recipeImageView"
-        android:src="@drawable/pancakes"
-        android:scaleType="fitCenter"
-        android:layout_gravity="center_horizontal" />
-
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:paddingTop="20dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="20dp">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:id="@+id/recipeNameTextView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textSize="20sp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold" />
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="150dp"
+            android:id="@+id/recipeImageView"
+            android:src="@drawable/pancakes"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center_horizontal" />
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="4.5/5"
-            android:id="@+id/ratingTextView"
-            android:layout_alignTop="@+id/recipeNameTextView"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:textColor="@color/colorAccent"
-            android:textStyle="bold" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:orientation="vertical"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_above="@+id/saveRecipeButton"
-            android:paddingLeft="30dp"
+            android:background="@android:color/white"
             android:paddingTop="20dp"
-            android:paddingRight="30dp"
-            android:layout_alignParentTop="true">
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time"
-                android:id="@+id/timeTextView"
-                android:drawableLeft="@drawable/ic_access_time_white_24dp"
-                android:drawablePadding="4dp"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp"
-                android:gravity="center" />
+                android:text=""
+                android:id="@+id/recipeNameTextView"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="20sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text=""-->
+            <!--android:id="@+id/ingredientsTextView"-->
+            <!--android:layout_below="@+id/recipeNameTextView"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_alignParentStart="true"-->
+            <!--android:textColor="@color/colorSecondaryText"-->
+            <!--android:textStyle="italic"/>-->
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ingredients"
-                android:id="@+id/ingredientsTextView"
-                android:drawableLeft="@drawable/ic_format_list_bulleted_white_24dp"
-                android:drawablePadding="4dp"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"/>
+                android:text="4.5/5"
+                android:id="@+id/ratingTextView"
+                android:layout_alignTop="@+id/recipeNameTextView"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold" />
+        </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rating"
-                android:drawableLeft="@drawable/ic_star_white_24dp"
-                android:drawablePadding="4dp"
-                android:id="@+id/ratingsTextView"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp"
-                android:gravity="center_vertical"/>
-
-        </LinearLayout>
-
-        <Button
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Save Recipe"
-            android:id="@+id/saveRecipeButton"
-            android:layout_alignParentBottom="true"
-            android:textSize="15sp" />
-    </RelativeLayout>
-</LinearLayout>
-    </FrameLayout>
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_above="@+id/saveRecipeButton"
+                android:paddingLeft="30dp"
+                android:paddingTop="20dp"
+                android:paddingRight="30dp"
+                android:layout_alignParentTop="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Time"
+                    android:id="@+id/timeTextView"
+                    android:drawableLeft="@drawable/ic_access_time_white_24dp"
+                    android:drawablePadding="4dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ingredients"
+                    android:id="@+id/ingredientsTextView"
+                    android:drawableLeft="@drawable/ic_format_list_bulleted_white_24dp"
+                    android:drawablePadding="4dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rating"
+                    android:drawableLeft="@drawable/ic_star_white_24dp"
+                    android:drawablePadding="4dp"
+                    android:id="@+id/ratingsTextView"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_vertical"/>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save Recipe"
+                android:id="@+id/saveRecipeButton"
+                android:layout_alignParentBottom="true"
+                android:textSize="15sp" />
+        </RelativeLayout>
+    </LinearLayout>
+</FrameLayout>

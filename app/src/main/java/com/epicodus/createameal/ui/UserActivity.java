@@ -37,7 +37,7 @@ import okhttp3.Response;
 
 
 public class UserActivity extends AppCompatActivity implements View.OnClickListener{
-   public static final String TAG = UserActivity.class.getSimpleName();
+    public static final String TAG = UserActivity.class.getSimpleName();
 
     private DatabaseReference mSearchedRecipeReference;
 
@@ -140,4 +140,3 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 }
-

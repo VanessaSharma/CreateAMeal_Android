@@ -1,8 +1,8 @@
+
 package com.epicodus.createameal.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.preference.PreferenceManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -19,9 +19,6 @@ import com.epicodus.createameal.R;
 import com.epicodus.createameal.adapters.RecipeListAdapter;
 import com.epicodus.createameal.services.YummlyService;
 import com.epicodus.createameal.models.Recipe;
-import com.epicodus.createameal.util.OnRecipeSelectedListener;
-
-import org.parceler.Parcels;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,49 +29,104 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class RecipeResultsActivity extends AppCompatActivity implements OnRecipeSelectedListener{
+public class RecipeResultsActivity extends AppCompatActivity {
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
+    private String mRecentRecipe;
+    public static final String TAG = RecipeResultsActivity.class.getSimpleName();
 
-    private Integer mPosition;
-    ArrayList<Recipe> mRecipes;
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_recipe_results);
+    private RecipeListAdapter mAdapter;
+    public ArrayList<Recipe> mRecipes = new ArrayList<>();
 
-            if (savedInstanceState != null) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_recipe_results);
+        ButterKnife.bind(this);
 
-                if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-                    mPosition = savedInstanceState.getInt(Constants.EXTRA_KEY_POSITION);
-                    mRecipes = Parcels.unwrap(savedInstanceState.getParcelable(Constants.EXTRA_KEY_RECIPES));
+        int startingPosition = getIntent().getIntExtra("position", 0);
 
-                    if (mPosition != null && mRecipes != null) {
-                        Intent intent = new Intent(this, RecipeDetailActivity.class);
-                        intent.putExtra(Constants.EXTRA_KEY_POSITION, mPosition);
-                        intent.putExtra(Constants.EXTRA_KEY_RECIPES, Parcels.wrap(mRecipes));
-                        startActivity(intent);
-                    }
+        Intent intent = getIntent();
+        String recipe = intent.getStringExtra("recipe");
 
-                }
+        getRecipes(recipe);
 
-            }
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentRecipe = mSharedPreferences.getString(Constants.PREFERENCES_NAME_KEY, null);
 
-        }
-
-        @Override
-        protected void onSaveInstanceState(Bundle outState) {
-            super.onSaveInstanceState(outState);
-
-            if (mPosition != null && mRecipes != null) {
-                outState.putInt(Constants.EXTRA_KEY_POSITION, mPosition);
-                outState.putParcelable(Constants.EXTRA_KEY_RECIPES, Parcels.wrap(mRecipes));
-            }
-
-        }
-
-        @Override
-        public void onRecipeSelected(Integer position, ArrayList<Recipe> recipes) {
-            mPosition = position;
-            mRecipes = recipes;
+        if (mRecentRecipe != null) {
+            getRecipes(mRecentRecipe);
         }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_search, menu);
+        ButterKnife.bind(this);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
+
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                addToSharedPreferences(query);
+                getRecipes(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+
+        });
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+    private void getRecipes(final String recipeName){
+        final YummlyService yummlyService = new YummlyService();
+        yummlyService.findRecipes(recipeName, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) {
+                mRecipes = yummlyService.processResults(response);
+                RecipeResultsActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mAdapter = new RecipeListAdapter(getApplicationContext(), mRecipes);
+                        mRecyclerView.setAdapter(mAdapter);
+                        RecyclerView.LayoutManager layoutManager =
+                                new LinearLayoutManager(RecipeResultsActivity.this);
+                        mRecyclerView.setLayoutManager(layoutManager);
+                        mRecyclerView.setHasFixedSize(true);
+                    }
+                });
+            }
+        });
+    }
+
+    private void addToSharedPreferences(String name) {
+        mEditor.putString(Constants.PREFERENCES_NAME_KEY, name).apply();
+    }
+
+}
